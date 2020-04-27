@@ -9,11 +9,15 @@
 import SwiftUI
 
 func notification(_ txt: String) {
+    if txt.isEmpty { return }
+    
+    
+    
 }
 
 struct ContentView: View {
     
-    @State var txt: String = "Test"
+    @State var txt: String = ""
     
     var body: some View {
         
@@ -34,9 +38,18 @@ struct ContentView: View {
             
             VStack {
                 
-                TextField("Remind me of...", text: txtBinding)
-                    .padding(txt.isEmpty ? .all : [.top, .leading, .trailing])
-                    .multilineTextAlignment(.center)
+                ZStack {
+                    if(txt.isEmpty) {
+                        Text("Remind me of...")
+                            .padding(txt.isEmpty ? .all : [.top, .leading, .trailing])
+                            .foregroundColor(.gray)
+                            .transition(AnyTransition.offset(y: -18.0)
+                                .combined(with: .opacity))
+                    }
+                    TextField("", text: txtBinding)
+                        .padding(txt.isEmpty ? .all : [.top, .leading, .trailing])
+                        .multilineTextAlignment(.center)
+                }
                 
                 if !txt.isEmpty {
                     Button(action: { notification(self.txt) }) {
