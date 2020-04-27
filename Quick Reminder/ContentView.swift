@@ -9,7 +9,6 @@
 import SwiftUI
 
 func notification(_ txt: String) {
-    
 }
 
 struct ContentView: View {
@@ -20,7 +19,7 @@ struct ContentView: View {
         
         let txtBinding: Binding<String> = Binding<String>(
             get: { self.txt },
-            set: { let newStr = $0; withAnimation() { self.txt = newStr } })
+            set: { let newStr = $0; withAnimation(.easeInOut) { self.txt = newStr } })
         
         return VStack() {
             
@@ -42,7 +41,7 @@ struct ContentView: View {
                 if !txt.isEmpty {
                     Button(action: { notification(self.txt) }) {
                         Text("Remind me!")
-                            .padding()
+                            .padding([.leading, .bottom, .trailing])
                     }
                     .transition(AnyTransition.offset()
                     .combined(with: .opacity))
