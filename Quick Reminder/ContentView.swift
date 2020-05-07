@@ -11,62 +11,55 @@ import SwiftUI
 func notification(_ txt: String) {
     if txt.isEmpty { return }
     
+    let content = UNMutableNotificationContent()
+    content.badge = 0
+    content.body = txt
+    content.title = "Remember:"
     
+    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
+    
+    let req = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+    
+    nCenter.add(req)
     
 }
 
 struct ContentView: View {
     
-    @State var txt: String = ""
+    @State var reminderWorks = true;
     
     var body: some View {
         
-        let txtBinding: Binding<String> = Binding<String>(
-            get: { self.txt },
-            set: { let newStr = $0; withAnimation(.easeInOut) { self.txt = newStr } })
+        let reminderView = ReminderView(onSubmission: { str, callback in
+            ifNotificationsUndetermined(then: {
+                getProvisionalAuthorization { granted in
+                    if(granted) {
+                        notification(str)
+                        callback()
+                    } else {
+                        self.reminderWorks = false;
+                    }
+                }
+            }, andElse: {
+                ifNotificationsDenied(then: {
+                    self.reminderWorks = false
+                }, andElse: {
+                    notification(str)
+                    callback()
+                })
+            })
+        })
         
-        return VStack() {
-            
-            Spacer()
-            
-            Text("Quick Reminder")
-                .font(.title)
-            Text("by Kilian Friedrich")
-                .font(.subheadline)
-            
-            Spacer()
-            
-            VStack {
-                
-                ZStack {
-                    if(txt.isEmpty) {
-                        Text("Remind me of...")
-                            .padding(txt.isEmpty ? .all : [.top, .leading, .trailing])
-                            .foregroundColor(.gray)
-                            .transition(AnyTransition.offset(y: -18.0)
-                                .combined(with: .opacity))
+        return Group() {
+            if(reminderWorks) {
+                reminderView
+            } else {
+                IntroductionView {
+                    ifNotificationsDenied(then: {}) {
+                        self.reminderWorks = true
                     }
-                    TextField("", text: txtBinding)
-                        .padding(txt.isEmpty ? .all : [.top, .leading, .trailing])
-                        .multilineTextAlignment(.center)
                 }
-                
-                if !txt.isEmpty {
-                    Button(action: { notification(self.txt) }) {
-                        Text("Remind me!")
-                            .padding([.leading, .bottom, .trailing])
-                    }
-                    .transition(AnyTransition.offset()
-                    .combined(with: .opacity))
-                }
-                
             }
-            .frame(height: 0.0)
-            
-            Spacer()
-            Spacer()
-            Spacer()
-            
         }
         
     }
