@@ -1,109 +1,91 @@
 {
   "images" : [
     {
-      "filename" : "Bildschirmfoto 2020-05-07 um 18.06.59-10.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "Bildschirmfoto 2020-05-07 um 18.06.59-11.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
-      "filename" : "Bildschirmfoto 2020-05-07 um 18.06.59-12.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "Bildschirmfoto 2020-05-07 um 18.06.59-13.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
-      "filename" : "Bildschirmfoto 2020-05-07 um 18.06.59-14.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
-      "filename" : "Bildschirmfoto 2020-05-07 um 18.06.59-15.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
-      "filename" : "Bildschirmfoto 2020-05-07 um 18.06.59-16.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename" : "Bildschirmfoto 2020-05-07 um 18.06.59-17.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
     },
     {
-      "filename" : "Bildschirmfoto 2020-05-07 um 18.06.59-9.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "20x20"
     },
     {
-      "filename" : "Bildschirmfoto 2020-05-07 um 18.06.59-8.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "Bildschirmfoto 2020-05-07 um 18.06.59-7.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "29x29"
     },
     {
-      "filename" : "Bildschirmfoto 2020-05-07 um 18.06.59-6.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "Bildschirmfoto 2020-05-07 um 18.06.59-5.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "40x40"
     },
     {
-      "filename" : "Bildschirmfoto 2020-05-07 um 18.06.59-4.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
-      "filename" : "Bildschirmfoto 2020-05-07 um 18.06.59-3.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "76x76"
     },
     {
-      "filename" : "Bildschirmfoto 2020-05-07 um 18.06.59-2.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "76x76"
     },
     {
-      "filename" : "Bildschirmfoto 2020-05-07 um 18.06.59-1.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "83.5x83.5"
     },
     {
-      "filename" : "Bildschirmfoto 2020-05-07 um 18.06.59.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"
