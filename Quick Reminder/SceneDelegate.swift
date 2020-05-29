@@ -24,12 +24,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
-            DispatchQueue.main.async {
                 let window = UIWindow(windowScene: windowScene)
                 window.rootViewController = UIHostingController(rootView: ContentView())
                 self.window = window
                 window.makeKeyAndVisible()
-            }
         }
         
     }

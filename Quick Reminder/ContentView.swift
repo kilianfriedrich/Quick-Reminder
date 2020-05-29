@@ -27,10 +27,11 @@ func notification(_ txt: String) {
 struct ContentView: View {
     
     @State var reminderWorks = true;
+    @State var content = "";
     
     var body: some View {
         
-        let reminderView = ReminderView(onSubmission: { str, callback in
+        let reminderView = ReminderView(txt: $content, onSubmission: { str, callback in
             ifNotificationsUndetermined(then: {
                 getProvisionalAuthorization { granted in
                     if(granted) {
@@ -56,6 +57,8 @@ struct ContentView: View {
             } else {
                 IntroductionView {
                     ifNotificationsDenied(then: {}) {
+                        notification(self.content)
+                        reminderView.afterNotification()
                         self.reminderWorks = true
                     }
                 }

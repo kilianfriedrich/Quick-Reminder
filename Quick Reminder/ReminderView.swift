@@ -10,9 +10,16 @@ import SwiftUI
 
 struct ReminderView: View {
     
+    @Binding var txt: String
     var onSubmission: (String, @escaping () -> Void) -> Void
-    @State var txt: String = ""
     @State var showS = false
+    
+    func afterNotification()  {
+        withAnimation { self.txt = ""; self.showS = true }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+            withAnimation { self.showS = false }
+        }
+    }
     
     var body: some View {
         
@@ -52,10 +59,7 @@ struct ReminderView: View {
                 if !txt.isEmpty {
                     Button(action: {
                         self.onSubmission(self.txt) {
-                            withAnimation { self.txt = ""; self.showS = true }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
-                                withAnimation { self.showS = false }
-                            }
+                            self.afterNotification()
                         }
                     }) {
                         Text("Remind me!")
@@ -74,11 +78,5 @@ struct ReminderView: View {
             
         }
         
-    }
-}
-
-struct ReminderView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReminderView(onSubmission: {str, callback in })
     }
 }
