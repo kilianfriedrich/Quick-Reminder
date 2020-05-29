@@ -10,12 +10,16 @@ import SwiftUI
 
 let center = UNUserNotificationCenter.current()
 
-struct IntroductionView: View {
+// Shows an error text and a tutorial how to fix it
+// when there are no notification rights
+struct ErrorView: View {
     
     var onClick: () -> Void
     
     var body: some View {
-        VStack() {
+        
+        VStack {
+            
             VStack(alignment: .leading) {
                 Text("That didn't work!")
                     .font(.largeTitle)
@@ -25,18 +29,13 @@ struct IntroductionView: View {
                 Text("Go to Settings > Notifications > Quick Reminder and enable notifications to continue.")
                 .padding()
             }
-            Button(action: {
-                self.onClick()
-            }) {
+            
+            Button(action: { self.onClick() /* execute lambda that was specified on initialization */ }) {
                 Text("Got it!")
                     .padding()
             }
+            
         }
-    }
-}
-
-struct IntroductionView_Previews: PreviewProvider {
-    static var previews: some View {
-        IntroductionView {}
+        
     }
 }
